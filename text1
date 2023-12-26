@@ -1,0 +1,72 @@
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <ctime>
+using namespace std;
+void didplayAccountInfo(string&name,int&, int&, int &);
+void depositmoney(int &deposit, int &current);
+void withdraw1(int& current, int withdraw);
+
+
+
+//task 1
+void didplayAccountInfo(string& name, int& acc, int& balance,int &current) {
+	//which displays the initial account information.
+	//It includes the account holder's name, account number, and the current balance
+	cout << "Account Holder Name: " << endl;
+	getline(cin,name);
+	cout << "Account Number: " << endl;
+	cin >> acc;
+	cout << "Balance: " << endl;
+	cin >> balance;
+	
+	current = balance;
+
+	}
+// task 2
+	void depositmoney(int& deposit, int& current) {
+		cout << "<<<<< Deposit Transaction >>>>>" << '\n'
+			<< "Deposit of RM 500 successful." << endl;
+		current = current + 500;
+	}
+
+	//task 3
+	void withdraw1(int &current,int withdraw) {
+		cout << "<<<<< Withdrawal Transaction >>>>>" << endl;
+		if (current >= 200) {
+			current = current - withdraw;
+			cout << "Withdrawal of RM 200 successful." << endl;
+		}
+		else {
+			cout << "Insufficient funds for withdrawal" << endl;
+		}
+	}
+
+	//task 4
+	void displayAccountInfo(string &name, int& acc, int&current) {
+		cout << "<<<<< My Accounts Overview >>>>>" << endl;
+		cout << "Account Holder Name:" << name << endl;
+		cout << "Balance: " << current << endl;
+	}
+
+
+	int main()
+	{
+		string name;
+		int acc, balance, current = 0;
+		char m = 'y';
+
+
+		do {
+			int deposit = 500;
+			int withdraw = 200;
+			didplayAccountInfo(name, acc, balance,current);
+			depositmoney(deposit, current);
+			withdraw1(current,withdraw);
+			displayAccountInfo(name,acc,current);
+
+			cout << "Do you want to perform another transaction? (Y/N):";
+			cin.ignore();
+		} while (cin.get() == 'Y');
+
+	}
